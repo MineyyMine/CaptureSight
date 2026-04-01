@@ -14,7 +14,7 @@
   "os": "horizon",
   "panic-strategy": "abort",
   "relocation-model": "pic",
-  "target-c-int-width": "32",
+  "target-c-int-width": 32,
   "target-endian": "little",
   "target-pointer-width": "64",
   "exe-suffix": ".elf",
