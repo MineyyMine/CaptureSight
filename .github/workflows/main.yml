@@ -27,9 +27,12 @@ jobs:
 
       - name: Build
         run: make
-
+      
+      - name: Find ovl
+        run: find . -name "*.ovl"
+        
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: capturesight
-          path: "*.ovl"
+          path: "**/*.ovl"
