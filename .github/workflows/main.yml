@@ -20,10 +20,11 @@ jobs:
           submodules: recursive
 
       - name: Install Rust
-        uses: dtolnay/rust-toolchain@nightly
+        uses: dtolnay/rust-toolchain@master
         with:
+          toolchain: nightly-2023-05-01   # pin to around when the project was last maintained
           targets: aarch64-unknown-none
-
+          
       - name: Build
         run: make
 
