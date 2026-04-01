@@ -1,18 +1,15 @@
 name: Build
-
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
-
 jobs:
   build:
     runs-on: ubuntu-latest
     container:
       image: devkitpro/devkita64:latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -22,10 +19,12 @@ jobs:
       - name: Install Rust
         uses: dtolnay/rust-toolchain@nightly
         with:
-         components: rust-src
-         toolchain: nightly-2023-05-01   # pin to around when the project was last maintained
-         targets: aarch64-unknown-none
-          
+          components: rust-src
+          targets: aarch64-unknown-none
+
+      - name: Add rust-src explicitly
+        run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+
       - name: Build
         run: make
 
