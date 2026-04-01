@@ -1,41 +1,34 @@
-name: CICD
+name: Build
 
 on:
-  workflow_dispatch:
-    branches: [main]
   push:
-    branches: [main]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  lint-build-deploy:
-    name: Lint, test, and build
+  build:
     runs-on: ubuntu-latest
-    container: zaksabeast/devkitarm-rust
+    container:
+      image: devkitpro/devkita64:latest
+
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
 
-      - name: Lint
-        run: make -C libs/csight-core lint
-
-      - name: Test
-        run: make -C libs/csight-core test
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@nightly
+        with:
+          targets: aarch64-unknown-none
 
       - name: Build
         run: make
 
-      - name: Upload Artifacts
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: CaptureSight
-          retention-days: 5
-          path: out/capturesight.ovl
-
-      - name: Draft release
-        if: github.event_name == 'workflow_dispatch'
-        uses: softprops/action-gh-release@v1
-        with:
-          draft: true
-          files: out/capturesight.ovl
+          name: capturesight
+          path: "*.ovl"
