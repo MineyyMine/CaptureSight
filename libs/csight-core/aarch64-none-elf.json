@@ -16,7 +16,7 @@
   "relocation-model": "pic",
   "target-c-int-width": 32,
   "target-endian": "little",
-  "target-pointer-width": "64",
+  "target-pointer-width": 64,
   "exe-suffix": ".elf",
   "trap-unreachable": true,
   "emit-debug-gdb-scripts": true,
