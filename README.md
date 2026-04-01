@@ -11,7 +11,7 @@ CaptureSight is a Nintendo Switch homebrew to view Pokemon data while playing Po
   - In-Trade Pokemon
   - Raid Pokemon
   - Party Pokemon
-- View all active dens
+- View all current active dens
   - The number of advances until a Shiny Pokemon
   - Species of a den
   - Shiny type of a den (star or square)
