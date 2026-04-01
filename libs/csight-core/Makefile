@@ -1,7 +1,7 @@
 .PHONY:	all release clean docs lint test
 
 CARGO	:=  cargo +nightly
-CARGO_FLAGS	:=  -Z build-std=core,alloc --target aarch64-none-elf.json
+CARGO_FLAGS	:=  -Z build-std=core,alloc -Z json-target-spec --target aarch64-none-elf.json
 
 all: lint test release
 
