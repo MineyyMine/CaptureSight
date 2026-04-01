@@ -23,8 +23,8 @@ jobs:
         uses: dtolnay/rust-toolchain@nightly
         with:
          components: rust-src
-          toolchain: nightly-2023-05-01   # pin to around when the project was last maintained
-          targets: aarch64-unknown-none
+         toolchain: nightly-2023-05-01   # pin to around when the project was last maintained
+         targets: aarch64-unknown-none
           
       - name: Build
         run: make
